@@ -11,6 +11,7 @@ export class AgendaRepository {
       data: {
         title: data.title,
         duration: data.duration || 60000,
+        approved: false,
       },
     });
 
