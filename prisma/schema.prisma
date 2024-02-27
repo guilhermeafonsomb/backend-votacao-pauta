@@ -18,4 +18,26 @@ model User {
   name      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  Vote      Vote[]
+}
+
+model Agenda {
+  id       Int     @id @default(autoincrement())
+  title    String
+  open     Boolean @default(false)
+  duration Int     @default(1)
+  yesVotes Int     @default(0)
+  noVotes  Int     @default(0)
+  votes    Vote[]
+}
+
+model Vote {
+  id       Int     @id @default(autoincrement())
+  userId   Int
+  agendaId Int
+  approved Boolean
+  user     User    @relation(fields: [userId], references: [id])
+  agenda   Agenda  @relation(fields: [agendaId], references: [id])
+
+  @@unique([userId, agendaId])
 }
