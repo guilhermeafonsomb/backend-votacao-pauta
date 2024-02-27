@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AgendaDTO } from 'src/modules/models/agendaModels';
+import { AgendaDTO } from 'src/modules/Agenda/models/agendaModels';
 import { AgendaRepository } from '../agenda.repository';
 import { AgendaService } from '../agenda.service';
 import { mockAgendaDTO, mockAgendaRepository } from './agenda.mock';

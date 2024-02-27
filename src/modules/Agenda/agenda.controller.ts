@@ -7,8 +7,8 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { AgendaDTO } from '../models/agendaModels';
 import { AgendaService } from './agenda.service';
+import { AgendaDTO } from './models/agendaModels';
 
 @Controller('agendas')
 export class AgendaController {

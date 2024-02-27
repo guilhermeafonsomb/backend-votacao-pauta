@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PrismaService } from 'src/database/PrismaService';
-import { AgendaDTO } from 'src/modules/models/agendaModels';
+import { AgendaDTO } from 'src/modules/Agenda/models/agendaModels';
 import { AgendaController } from '../agenda.controller';
 import { AgendaService } from '../agenda.service';
 import { mockAgenda, mockAgendaDTO, mockAgendas } from './agenda.mock';

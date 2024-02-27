@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/database/PrismaService';
-import { Agenda, AgendaDTO } from '../models/agendaModels';
+import { Agenda, AgendaDTO } from './models/agendaModels';
 
 @Injectable()
 export class AgendaRepository {

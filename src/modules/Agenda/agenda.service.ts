@@ -1,6 +1,6 @@
 import { HttpException, Injectable } from '@nestjs/common';
-import { AgendaDTO } from '../models/agendaModels';
 import { AgendaRepository } from './agenda.repository';
+import { AgendaDTO } from './models/agendaModels';
 
 @Injectable()
 export class AgendaService {

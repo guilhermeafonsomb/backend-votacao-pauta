@@ -1,4 +1,4 @@
-import { Agenda, AgendaDTO } from 'src/modules/models/agendaModels';
+import { Agenda, AgendaDTO } from 'src/modules/Agenda/models/agendaModels';
 
 export const mockAgendas: Agenda[] = [
   {
