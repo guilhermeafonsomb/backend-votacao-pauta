@@ -25,7 +25,7 @@ model Agenda {
   id       Int     @id @default(autoincrement())
   title    String
   open     Boolean @default(false)
-  duration Int     @default(1)
+  duration Int     @default(60000)
   yesVotes Int     @default(0)
   noVotes  Int     @default(0)
   votes    Vote[]
