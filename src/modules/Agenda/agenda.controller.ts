@@ -1,0 +1,41 @@
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
+import { AgendaDTO } from '../models/agendaModels';
+import { AgendaService } from './agenda.service';
+
+@Controller('agendas')
+export class AgendaController {
+  constructor(private readonly agendaService: AgendaService) {}
+
+  @Post()
+  async create(@Body() userData: AgendaDTO) {
+    return await this.agendaService.create(userData);
+  }
+
+  @Get()
+  async findAll() {
+    return await this.agendaService.findAll();
+  }
+
+  @Get(':id')
+  async findOne(@Param('id') id: string) {
+    return await this.agendaService.findOne(Number(id));
+  }
+
+  @Put(':id')
+  async update(@Param('id') id: string, @Body() agendaData: AgendaDTO) {
+    return await this.agendaService.update(Number(id), agendaData);
+  }
+
+  @Delete(':id')
+  async delete(@Param('id') id: string) {
+    return await this.agendaService.delete(Number(id));
+  }
+}
