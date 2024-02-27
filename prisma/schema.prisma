@@ -25,6 +25,7 @@ model Agenda {
   id       Int     @id @default(autoincrement())
   title    String
   open     Boolean @default(false)
+  approved Boolean @default(false)
   duration Int     @default(60000)
   yesVotes Int     @default(0)
   noVotes  Int     @default(0)
@@ -32,12 +33,12 @@ model Agenda {
 }
 
 model Vote {
-  id       Int     @id @default(autoincrement())
-  userId   Int
+  id       Int    @id @default(autoincrement())
+  value    String
   agendaId Int
-  approved Boolean
-  user     User    @relation(fields: [userId], references: [id])
-  agenda   Agenda  @relation(fields: [agendaId], references: [id])
+  agenda   Agenda @relation(fields: [agendaId], references: [id])
+  User     User?  @relation(fields: [userId], references: [id])
+  userId   Int?
 
   @@unique([userId, agendaId])
 }
