@@ -67,7 +67,7 @@ describe('UserController', () => {
 
   it('should find one user', async () => {
     const id = '1';
-    await expect(controller.findById(id)).resolves.toEqual(singleUser);
+    await expect(controller.findOne(id)).resolves.toEqual(singleUser);
     expect(service.findOne).toHaveBeenCalledWith(Number(id));
   });
 
