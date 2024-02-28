@@ -32,7 +32,7 @@ describe('AgendaService', () => {
   it('should find all agendas', async () => {
     agendaRepository.findAll.mockResolvedValue(['agenda1', 'agenda2']);
     expect(agendaRepository.findAll).not.toHaveBeenCalled();
-    const result = await agendaService.findAll();
+    const result = await agendaService.findAll('false');
     expect(agendaRepository.findAll).toHaveBeenCalled();
     expect(result).toEqual(['agenda1', 'agenda2']);
   });

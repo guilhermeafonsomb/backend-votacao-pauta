@@ -61,8 +61,9 @@ describe('AgendaController', () => {
   });
 
   it('should find all agendas', async () => {
-    await expect(controller.findAll()).resolves.toEqual(agendaArray);
-    expect(service.findAll).toHaveBeenCalled();
+    const status = 'false';
+    await expect(controller.findAll(status)).resolves.toEqual(agendaArray);
+    expect(service.findAll).toHaveBeenCalledWith(status);
   });
 
   it('should find one agenda', async () => {
