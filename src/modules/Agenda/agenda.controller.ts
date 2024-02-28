@@ -19,9 +19,9 @@ export class AgendaController {
     return await this.agendaService.create(userData);
   }
 
-  @Get()
-  async findAll() {
-    return await this.agendaService.findAll();
+  @Get(':status')
+  async findAll(@Param('status') status: string) {
+    return await this.agendaService.findAll(status);
   }
 
   @Get(':id')

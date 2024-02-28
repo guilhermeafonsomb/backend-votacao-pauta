@@ -16,9 +16,9 @@ export class AgendaService {
     }
   }
 
-  async findAll() {
+  async findAll(status: string) {
     try {
-      const agendas = await this.agendaRepository.findAll();
+      const agendas = await this.agendaRepository.findAll(status);
 
       return agendas;
     } catch (error) {

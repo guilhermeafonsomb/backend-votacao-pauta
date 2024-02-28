@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/database/PrismaService';
-import { Agenda, AgendaDTO } from './models/agendaModels';
+import { AgendaDTO } from './models/agendaModels';
 
 @Injectable()
 export class AgendaRepository {
@@ -33,12 +33,16 @@ export class AgendaRepository {
     });
   }
 
-  async findAll(): Promise<Agenda[]> {
-    const allAgendas = await this.prisma.agenda.findMany();
+  async findAll(status: string) {
+    const newStatus = status === 'true' ? true : false;
+
+    const allAgendas = await this.prisma.agenda.findMany({
+      where: { open: newStatus },
+    });
     return allAgendas;
   }
 
-  async findOne(agendaId: number): Promise<Agenda> {
+  async findOne(agendaId: number) {
     const agendaById = await this.prisma.agenda.findUnique({
       where: { id: agendaId },
     });
