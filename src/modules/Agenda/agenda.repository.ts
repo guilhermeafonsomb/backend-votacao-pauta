@@ -34,10 +34,24 @@ export class AgendaRepository {
   }
 
   async findAll(status: string) {
-    const newStatus = status === 'true' ? true : false;
+    if (status === 'close') {
+      const closeAgendas = this.prisma.agenda.findMany({
+        where: { open: false },
+      });
+
+      return closeAgendas;
+    }
+
+    if (status === 'false') {
+      const closeAgendas = this.prisma.agenda.findMany({
+        where: { open: null },
+      });
+
+      return closeAgendas;
+    }
 
     const allAgendas = await this.prisma.agenda.findMany({
-      where: { open: newStatus },
+      where: { open: true },
     });
     return allAgendas;
   }
