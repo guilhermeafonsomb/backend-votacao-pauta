@@ -24,7 +24,7 @@ export class AgendaController {
     return await this.agendaService.findAll(status);
   }
 
-  @Get(':id')
+  @Get('/byOne/:id')
   async findOne(@Param('id') id: string) {
     return await this.agendaService.findOne(Number(id));
   }
