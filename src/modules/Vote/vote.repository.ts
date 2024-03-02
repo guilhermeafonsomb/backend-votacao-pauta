@@ -11,6 +11,7 @@ export class VoteRepository {
       where: { id: agendaId },
       data: {
         open: true,
+        startTime: new Date(),
       },
     });
 
