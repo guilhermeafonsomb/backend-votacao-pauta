@@ -10,6 +10,12 @@ export class VoteService {
     try {
       const openSession = await this.voteRepository.openVotingSession(agendaId);
 
+      const duration = openSession.duration;
+
+      setTimeout(async () => {
+        await this.closeVotingSession(agendaId);
+      }, duration);
+
       return openSession;
     } catch (error) {
       throw new HttpException(error, 500);
