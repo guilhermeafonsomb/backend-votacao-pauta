@@ -31,6 +31,7 @@ export const mockAgenda: Agenda = {
 export const mockAgendaDTO: AgendaDTO = {
   title: 'testing',
   duration: 60000,
+  category: 'testing',
 };
 
 export const mockAgendaRepository = () => ({
