@@ -1,5 +1,5 @@
 export type AddVoteDTO = {
-  agendaId: number;
-  userId: number;
+  agendaId: string;
+  userId: string;
   vote: string;
 };

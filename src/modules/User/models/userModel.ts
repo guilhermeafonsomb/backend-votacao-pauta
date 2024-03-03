@@ -3,7 +3,7 @@ export type UserModelDTO = {
 };
 
 export type UserModel = {
-  id: number;
+  id: string;
   name: string;
   createdAt: string;
   updatedAt: string;

@@ -2,7 +2,7 @@ import { Agenda, AgendaDTO } from 'src/modules/Agenda/models/agendaModels';
 
 export const mockAgendas: Agenda[] = [
   {
-    id: 1,
+    id: '1',
     title: 'testing title',
     duration: 60000,
     open: false,
@@ -11,7 +11,7 @@ export const mockAgendas: Agenda[] = [
     noVotes: 3,
   },
   {
-    id: 2,
+    id: '2',
     title: 'testing',
     duration: 60000,
     category: 'testing',
@@ -23,7 +23,7 @@ export const mockAgendas: Agenda[] = [
 ];
 
 export const mockAgenda: Agenda = {
-  id: 2,
+  id: '2',
   title: 'testing',
   category: 'testing',
   duration: 60000,

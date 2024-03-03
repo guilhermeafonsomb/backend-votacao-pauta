@@ -5,7 +5,7 @@ export type AgendaDTO = {
 };
 
 export type Agenda = {
-  id: number;
+  id: string;
   title: string;
   category: string;
   duration: number;

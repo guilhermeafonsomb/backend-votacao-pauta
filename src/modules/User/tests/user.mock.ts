@@ -1,12 +1,22 @@
 import { UserModel } from '../models/userModel';
 
 export const mockUsers: UserModel[] = [
-  { id: 1, name: 'User One', createdAt: '2020-01-01', updatedAt: '2020-01-02' },
-  { id: 2, name: 'User Two', createdAt: '2020-02-01', updatedAt: '2020-02-02' },
+  {
+    id: '1',
+    name: 'User One',
+    createdAt: '2020-01-01',
+    updatedAt: '2020-01-02',
+  },
+  {
+    id: '2',
+    name: 'User Two',
+    createdAt: '2020-02-01',
+    updatedAt: '2020-02-02',
+  },
 ];
 
 export const mockUser: UserModel = {
-  id: 1,
+  id: '1',
   name: 'User One',
   createdAt: '2020-01-01',
   updatedAt: '2020-01-02',

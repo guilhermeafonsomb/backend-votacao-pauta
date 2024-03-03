@@ -3,6 +3,6 @@ export interface CategoryDTO {
 }
 
 export interface Category {
-  id: number;
+  id: string;
   title: string;
 }

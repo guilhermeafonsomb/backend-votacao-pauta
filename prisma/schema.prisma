@@ -14,7 +14,7 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(uuid())
   name      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -22,7 +22,7 @@ model User {
 }
 
 model Agenda {
-  id         Int       @id @default(autoincrement())
+  id         String    @id @default(uuid())
   title      String
   open       Boolean?
   approved   Boolean   @default(false)
@@ -32,11 +32,11 @@ model Agenda {
   votes      Vote[]
   startTime  DateTime?
   category   Category  @relation(fields: [categoryId], references: [id])
-  categoryId Int
+  categoryId String
 }
 
 model Category {
-  id     Int      @id @default(autoincrement())
+  id     String   @id @default(uuid())
   title  String
   Agenda Agenda[]
 
@@ -44,12 +44,12 @@ model Category {
 }
 
 model Vote {
-  id       Int    @id @default(autoincrement())
+  id       String @id @default(uuid())
   value    String
-  agendaId Int
+  agendaId String
   agenda   Agenda @relation(fields: [agendaId], references: [id])
-  User     User?  @relation(fields: [userId], references: [id])
-  userId   Int?
+  User     User   @relation(fields: [userId], references: [id])
+  userId   String
 
   @@unique([userId, agendaId])
 }

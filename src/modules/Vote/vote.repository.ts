@@ -6,7 +6,7 @@ import { AddVoteDTO } from './models/voteModels';
 export class VoteRepository {
   constructor(private prisma: PrismaService) {}
 
-  async openVotingSession(agendaId: number) {
+  async openVotingSession(agendaId: string) {
     const openVotingSession = await this.prisma.agenda.update({
       where: { id: agendaId },
       data: {
@@ -18,7 +18,7 @@ export class VoteRepository {
     return openVotingSession;
   }
 
-  async closeVotingSession(agendaId: number) {
+  async closeVotingSession(agendaId: string) {
     const closeVotingSession = await this.prisma.agenda.update({
       where: { id: agendaId },
       data: {

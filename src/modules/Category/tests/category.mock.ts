@@ -1,5 +1,4 @@
-import { Category } from '@prisma/client';
-import { CategoryDTO } from '../models/categoryModels';
+import { Category, CategoryDTO } from '../models/categoryModels';
 
 export const mockCategoryRepository = () => ({
   create: jest.fn(),
@@ -12,17 +11,17 @@ export const mockCategoryRepository = () => ({
 
 export const mockCategories: Category[] = [
   {
-    id: 1,
+    id: '1',
     title: 'testing title',
   },
   {
-    id: 2,
+    id: '2',
     title: 'testing',
   },
 ];
 
 export const mockCategory: Category = {
-  id: 2,
+  id: '2',
   title: 'testing',
 };
 
