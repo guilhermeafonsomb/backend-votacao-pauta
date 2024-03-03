@@ -26,16 +26,16 @@ export class CategoryController {
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
-    return await this.categoryService.findOne(Number(id));
+    return await this.categoryService.findOne(id);
   }
 
   @Put(':id')
   async update(@Param('id') id: string, @Body() data: CategoryDTO) {
-    return await this.categoryService.update(Number(id), data);
+    return await this.categoryService.update(id, data);
   }
 
   @Delete(':id')
   async delete(@Param('id') id: string) {
-    return await this.categoryService.delete(Number(id));
+    return await this.categoryService.delete(id);
   }
 }

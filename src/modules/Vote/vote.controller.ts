@@ -8,12 +8,12 @@ export class VoteController {
 
   @Patch('/open/:agendaId')
   async openVotingSession(@Param('agendaId') agendaId: string) {
-    return await this.voteService.openVotingSession(Number(agendaId));
+    return await this.voteService.openVotingSession(agendaId);
   }
 
   @Patch('/close/:agendaId')
   async closeVotingSession(@Param('agendaId') agendaId: string) {
-    return await this.voteService.closeVotingSession(Number(agendaId));
+    return await this.voteService.closeVotingSession(agendaId);
   }
 
   @Post()

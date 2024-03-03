@@ -31,16 +31,16 @@ export class AgendaController {
 
   @Get('/byOne/:id')
   async findOne(@Param('id') id: string) {
-    return await this.agendaService.findOne(Number(id));
+    return await this.agendaService.findOne(id);
   }
 
   @Put(':id')
   async update(@Param('id') id: string, @Body() agendaData: AgendaDTO) {
-    return await this.agendaService.update(Number(id), agendaData);
+    return await this.agendaService.update(id, agendaData);
   }
 
   @Delete(':id')
   async delete(@Param('id') id: string) {
-    return await this.agendaService.delete(Number(id));
+    return await this.agendaService.delete(id);
   }
 }

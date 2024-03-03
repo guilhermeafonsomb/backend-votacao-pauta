@@ -36,7 +36,7 @@ export class AgendaRepository {
     return agenda;
   }
 
-  async update(agendaId: number, data: AgendaDTO) {
+  async update(agendaId: string, data: AgendaDTO) {
     const agendaUpdated = await this.prisma.agenda.update({
       where: { id: agendaId },
       data: {
@@ -48,7 +48,7 @@ export class AgendaRepository {
     return agendaUpdated;
   }
 
-  async delete(agendaId: number) {
+  async delete(agendaId: string) {
     return await this.prisma.agenda.delete({
       where: { id: agendaId },
     });
@@ -77,7 +77,7 @@ export class AgendaRepository {
     return allAgendas;
   }
 
-  async findOne(agendaId: number) {
+  async findOne(agendaId: string) {
     const agendaById = await this.prisma.agenda.findUnique({
       where: { id: agendaId },
     });

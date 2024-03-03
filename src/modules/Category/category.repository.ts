@@ -22,7 +22,7 @@ export class CategoryRepository {
     return categories;
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     const category = await this.prisma.category.findFirst({
       where: { id },
     });
@@ -38,7 +38,7 @@ export class CategoryRepository {
     return category;
   }
 
-  async update(categoryId: number, data: CategoryDTO) {
+  async update(categoryId: string, data: CategoryDTO) {
     const categoryUpdated = await this.prisma.category.update({
       where: { id: categoryId },
       data,
@@ -47,7 +47,7 @@ export class CategoryRepository {
     return categoryUpdated;
   }
 
-  async delete(categoryId: number) {
+  async delete(categoryId: string) {
     return await this.prisma.category.delete({
       where: { id: categoryId },
     });

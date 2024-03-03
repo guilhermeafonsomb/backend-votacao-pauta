@@ -30,7 +30,7 @@ export class UserService {
     }
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     try {
       const userById = await this.userRepository.findOne(id);
 
@@ -44,7 +44,7 @@ export class UserService {
     }
   }
 
-  async update(id: number, data: UserModelDTO) {
+  async update(id: string, data: UserModelDTO) {
     try {
       const userExists = await this.userRepository.findOne(id);
 
@@ -58,7 +58,7 @@ export class UserService {
     }
   }
 
-  async delete(id: number) {
+  async delete(id: string) {
     try {
       const userExists = await this.userRepository.findOne(id);
 

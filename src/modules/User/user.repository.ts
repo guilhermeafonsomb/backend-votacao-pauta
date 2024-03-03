@@ -14,20 +14,20 @@ export class UserRepository {
     return await this.prisma.user.findMany();
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     const userById = await this.prisma.user.findUnique({ where: { id } });
 
     return userById;
   }
 
-  async update(id: number, data: UserModelDTO) {
+  async update(id: string, data: UserModelDTO) {
     return this.prisma.user.update({
       where: { id },
       data,
     });
   }
 
-  async delete(id: number) {
+  async delete(id: string) {
     return this.prisma.user.delete({ where: { id } });
   }
 }

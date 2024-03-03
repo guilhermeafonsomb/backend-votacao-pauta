@@ -33,7 +33,7 @@ export class CategoryService {
     }
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     try {
       const category = await this.categoryRepository.findOne(id);
 
@@ -43,7 +43,7 @@ export class CategoryService {
     }
   }
 
-  async update(id: number, data: CategoryDTO) {
+  async update(id: string, data: CategoryDTO) {
     try {
       const category = await this.categoryRepository.findOne(id);
 
@@ -59,7 +59,7 @@ export class CategoryService {
     }
   }
 
-  async delete(id: number) {
+  async delete(id: string) {
     try {
       const category = await this.categoryRepository.findOne(id);
 

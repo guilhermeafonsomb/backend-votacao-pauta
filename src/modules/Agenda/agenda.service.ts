@@ -42,7 +42,7 @@ export class AgendaService {
     }
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     try {
       const agenda = await this.agendaRepository.findOne(id);
 
@@ -52,7 +52,7 @@ export class AgendaService {
     }
   }
 
-  async update(id: number, data: AgendaDTO) {
+  async update(id: string, data: AgendaDTO) {
     try {
       const agenda = await this.agendaRepository.findOne(id);
 
@@ -66,7 +66,7 @@ export class AgendaService {
     }
   }
 
-  async delete(id: number) {
+  async delete(id: string) {
     try {
       const agenda = await this.agendaRepository.findOne(id);
 

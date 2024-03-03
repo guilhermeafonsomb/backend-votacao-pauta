@@ -26,16 +26,16 @@ export class UserController {
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
-    return await this.userService.findOne(Number(id));
+    return await this.userService.findOne(id);
   }
 
   @Put(':id')
   async update(@Param('id') id: string, @Body() userData: UserModelDTO) {
-    return await this.userService.update(Number(id), userData);
+    return await this.userService.update(id, userData);
   }
 
   @Delete(':id')
   async delete(@Param('id') id: string) {
-    return await this.userService.delete(Number(id));
+    return await this.userService.delete(id);
   }
 }

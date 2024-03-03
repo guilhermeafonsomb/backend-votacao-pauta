@@ -6,7 +6,7 @@ import { VoteRepository } from './vote.repository';
 export class VoteService {
   constructor(private voteRepository: VoteRepository) {}
 
-  async openVotingSession(agendaId: number) {
+  async openVotingSession(agendaId: string) {
     try {
       const openSession = await this.voteRepository.openVotingSession(agendaId);
 
@@ -22,7 +22,7 @@ export class VoteService {
     }
   }
 
-  async closeVotingSession(agendaId: number) {
+  async closeVotingSession(agendaId: string) {
     try {
       const closeSession =
         await this.voteRepository.closeVotingSession(agendaId);
