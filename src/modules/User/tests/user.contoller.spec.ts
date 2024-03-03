@@ -32,7 +32,7 @@ describe('UserController', () => {
             findOne: jest.fn().mockResolvedValue(singleUser),
             update: jest
               .fn()
-              .mockImplementation((id: number, dto: UserModelDTO) => ({
+              .mockImplementation((id: string, dto: UserModelDTO) => ({
                 id,
                 ...dto,
                 updatedAt: new Date().toISOString(), // Simulate update timestamp
@@ -68,15 +68,13 @@ describe('UserController', () => {
   it('should find one user', async () => {
     const id = '1';
     await expect(controller.findOne(id)).resolves.toEqual(singleUser);
-    expect(service.findOne).toHaveBeenCalledWith(Number(id));
+    expect(service.findOne).toHaveBeenCalledWith(id);
   });
 
   it('should update a user', async () => {
     const updatedUserDto: UserModelDTO = { name: 'Updated Name' };
-    const id = 1;
-    await expect(
-      controller.update(id.toString(), updatedUserDto),
-    ).resolves.toEqual({
+    const id = '1';
+    await expect(controller.update(id, updatedUserDto)).resolves.toEqual({
       id,
       ...updatedUserDto,
       updatedAt: expect.any(String),
@@ -87,6 +85,6 @@ describe('UserController', () => {
   it('should remove a user', async () => {
     const id = '1';
     await expect(controller.delete(id)).resolves.toEqual({ deleted: true });
-    expect(service.delete).toHaveBeenCalledWith(Number(id));
+    expect(service.delete).toHaveBeenCalledWith(id);
   });
 });

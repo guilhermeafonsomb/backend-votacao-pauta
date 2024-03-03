@@ -33,7 +33,7 @@ describe('AgendaController', () => {
             findByCategory: jest.fn().mockResolvedValue(singleAgendar),
             update: jest
               .fn()
-              .mockImplementation((id: number, dto: AgendaDTO) => ({
+              .mockImplementation((id: string, dto: AgendaDTO) => ({
                 id,
                 ...dto,
                 updatedAt: new Date().toISOString(),
@@ -78,15 +78,13 @@ describe('AgendaController', () => {
   it('should find one agenda', async () => {
     const id = '1';
     await expect(controller.findOne(id)).resolves.toEqual(singleAgendar);
-    expect(service.findOne).toHaveBeenCalledWith(Number(id));
+    expect(service.findOne).toHaveBeenCalledWith(id);
   });
 
   it('should update a agenda', async () => {
     const updatedAgendaDto: AgendaDTO = mockAgendaDTO;
-    const id = 1;
-    await expect(
-      controller.update(id.toString(), updatedAgendaDto),
-    ).resolves.toEqual({
+    const id = '1';
+    await expect(controller.update(id, updatedAgendaDto)).resolves.toEqual({
       id,
       ...updatedAgendaDto,
       updatedAt: expect.any(String),
@@ -97,6 +95,6 @@ describe('AgendaController', () => {
   it('should remove a agenda', async () => {
     const id = '1';
     await expect(controller.delete(id)).resolves.toEqual({ deleted: true });
-    expect(service.delete).toHaveBeenCalledWith(Number(id));
+    expect(service.delete).toHaveBeenCalledWith(id);
   });
 });

@@ -48,7 +48,7 @@ describe('AgendaService', () => {
 
   it('should find one agenda', async () => {
     agendaRepository.findOne.mockResolvedValue('agenda');
-    const id = 1;
+    const id = '1';
     expect(agendaRepository.findOne).not.toHaveBeenCalled();
     const result = await agendaService.findOne(id);
     expect(agendaRepository.findOne).toHaveBeenCalledWith(id);
@@ -59,7 +59,7 @@ describe('AgendaService', () => {
     agendaRepository.findOne.mockResolvedValue('existingagenda');
     agendaRepository.update.mockResolvedValue('updatedagenda');
     const updateagendaDto: AgendaDTO = mockAgendaDTO;
-    const id = 1;
+    const id = '1';
     const result = await agendaService.update(id, updateagendaDto);
     expect(agendaRepository.update).toHaveBeenCalledWith(id, updateagendaDto);
     expect(result).toEqual('updatedagenda');
@@ -68,7 +68,7 @@ describe('AgendaService', () => {
   it('should delete a agenda', async () => {
     agendaRepository.findOne.mockResolvedValue('existingAgenda');
     agendaRepository.delete.mockResolvedValue(undefined);
-    const id = 1;
+    const id = '1';
     await agendaService.delete(id);
     expect(agendaRepository.delete).toHaveBeenCalledWith(id);
   });

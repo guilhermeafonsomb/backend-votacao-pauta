@@ -32,7 +32,7 @@ describe('CategoryController', () => {
             findOne: jest.fn().mockResolvedValue(singleCategory),
             update: jest
               .fn()
-              .mockImplementation((id: number, dto: CategoryDTO) => ({
+              .mockImplementation((id: string, dto: CategoryDTO) => ({
                 id,
                 ...dto,
                 updatedAt: new Date().toISOString(),
@@ -65,21 +65,21 @@ describe('CategoryController', () => {
   });
 
   it('should find one category', async () => {
-    const id = 1;
-    const result = await controller.findOne(id.toString());
+    const id = '1';
+    const result = await controller.findOne(id);
     expect(result).toEqual(singleCategory);
   });
 
   it('should update a category', async () => {
     const updateCategoryDto: CategoryDTO = mockCategoryDTO;
-    const id = 1;
-    const result = await controller.update(id.toString(), updateCategoryDto);
+    const id = '1';
+    const result = await controller.update(id, updateCategoryDto);
     expect(result).toEqual(expect.objectContaining(updateCategoryDto));
   });
 
   it('should delete a category', async () => {
-    const id = 1;
-    const result = await controller.delete(id.toString());
+    const id = '1';
+    const result = await controller.delete(id);
     expect(result).toEqual({ deleted: true });
   });
 });
