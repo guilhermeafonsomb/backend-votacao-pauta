@@ -39,7 +39,7 @@ describe('CategoryService', () => {
 
   it('should find one category', async () => {
     categoryRepository.findOne.mockResolvedValue('category');
-    const id = 1;
+    const id = '1';
     expect(categoryRepository.findOne).not.toHaveBeenCalled();
     const result = await categoryService.findOne(id);
     expect(categoryRepository.findOne).toHaveBeenCalledWith(id);
@@ -50,7 +50,7 @@ describe('CategoryService', () => {
     categoryRepository.findOne.mockResolvedValue('existingcategory');
     categoryRepository.update.mockResolvedValue('updatedcategory');
     const updateCategoryDto: CategoryDTO = mockCategoryDTO;
-    const id = 1;
+    const id = '1';
     const result = await categoryService.update(id, updateCategoryDto);
     expect(categoryRepository.update).toHaveBeenCalledWith(
       id,
@@ -62,7 +62,7 @@ describe('CategoryService', () => {
   it('should delete a category', async () => {
     categoryRepository.findOne.mockResolvedValue('deletedcategory');
     categoryRepository.delete.mockResolvedValue(undefined);
-    const id = 1;
+    const id = '1';
     await categoryService.delete(id);
     expect(categoryRepository.delete).toHaveBeenCalledWith(id);
   });
