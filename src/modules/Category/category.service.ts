@@ -1,4 +1,5 @@
 import { HttpException, Injectable } from '@nestjs/common';
+import { PrismaErrorCode } from '../../utils/apiError';
 import { CategoryRepository } from './category.repository';
 import { CategoryDTO } from './models/categoryModels';
 
@@ -69,6 +70,13 @@ export class CategoryService {
 
       return await this.categoryRepository.delete(id);
     } catch (error) {
+      console.log(error);
+      if (error.code === PrismaErrorCode.ForeignKeyConstraintFailed) {
+        throw new HttpException(
+          'Essa categoria esta sendo usada em alguma pauta.',
+          500,
+        );
+      }
       throw new HttpException(error, 500);
     }
   }
