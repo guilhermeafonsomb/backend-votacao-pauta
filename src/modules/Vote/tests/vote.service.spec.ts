@@ -14,7 +14,7 @@ describe('VoteService', () => {
         {
           provide: VoteRepository,
           useValue: {
-            openVotingSession: jest.fn(),
+            openVotingSession: jest.fn().mockResolvedValue({ duration: 10000 }),
             closeVotingSession: jest.fn(),
             addVote: jest.fn(),
           },
