@@ -18,6 +18,14 @@ export class AgendaRepository {
     return agenda;
   }
 
+  async findByCategory(category: string) {
+    const agenda = await this.prisma.agenda.findFirst({
+      where: { category },
+    });
+
+    return agenda;
+  }
+
   async findByTitle(title: string) {
     const agenda = await this.prisma.agenda.findFirst({
       where: { title },

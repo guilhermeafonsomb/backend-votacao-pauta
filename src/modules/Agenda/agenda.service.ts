@@ -22,6 +22,16 @@ export class AgendaService {
     }
   }
 
+  async findByCategory(category: string) {
+    try {
+      const agenda = await this.agendaRepository.findByCategory(category);
+
+      return agenda;
+    } catch (error) {
+      throw new HttpException(error, 500);
+    }
+  }
+
   async findAll(status: string) {
     try {
       const agendas = await this.agendaRepository.findAll(status);
