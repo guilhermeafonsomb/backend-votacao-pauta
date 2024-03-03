@@ -11,7 +11,9 @@ export class AgendaRepository {
       data: {
         title: data.title,
         duration: data.duration || 60000,
-        category: data.category,
+        category: {
+          connect: { title: data.title },
+        },
       },
     });
 
@@ -19,8 +21,8 @@ export class AgendaRepository {
   }
 
   async findByCategory(category: string) {
-    const agenda = await this.prisma.agenda.findFirst({
-      where: { category },
+    const agenda = await this.prisma.agenda.findMany({
+      where: { category: { title: category } },
     });
 
     return agenda;
@@ -37,7 +39,10 @@ export class AgendaRepository {
   async update(agendaId: number, data: AgendaDTO) {
     const agendaUpdated = await this.prisma.agenda.update({
       where: { id: agendaId },
-      data,
+      data: {
+        ...data,
+        category: { connect: { title: data.category } },
+      },
     });
 
     return agendaUpdated;

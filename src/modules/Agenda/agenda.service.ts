@@ -24,9 +24,9 @@ export class AgendaService {
 
   async findByCategory(category: string) {
     try {
-      const agenda = await this.agendaRepository.findByCategory(category);
+      const agendas = await this.agendaRepository.findByCategory(category);
 
-      return agenda;
+      return agendas;
     } catch (error) {
       throw new HttpException(error, 500);
     }
@@ -74,7 +74,7 @@ export class AgendaService {
         throw new Error('Agenda does not exist');
       }
 
-      return this.agendaRepository.delete(id);
+      return await this.agendaRepository.delete(id);
     } catch (error) {
       throw new HttpException(error, 500);
     }
