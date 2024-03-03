@@ -70,7 +70,6 @@ export class CategoryService {
 
       return await this.categoryRepository.delete(id);
     } catch (error) {
-      console.log(error);
       if (error.code === PrismaErrorCode.ForeignKeyConstraintFailed) {
         throw new HttpException(
           'Essa categoria esta sendo usada em alguma pauta.',
