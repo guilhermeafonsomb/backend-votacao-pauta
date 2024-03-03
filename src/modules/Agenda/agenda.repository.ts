@@ -17,6 +17,14 @@ export class AgendaRepository {
     return agenda;
   }
 
+  async findByTitle(title: string) {
+    const agenda = await this.prisma.agenda.findFirst({
+      where: { title },
+    });
+
+    return agenda;
+  }
+
   async update(agendaId: number, data: AgendaDTO) {
     const agendaUpdated = await this.prisma.agenda.update({
       where: { id: agendaId },

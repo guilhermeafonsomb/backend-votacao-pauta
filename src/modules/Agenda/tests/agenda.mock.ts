@@ -39,4 +39,5 @@ export const mockAgendaRepository = () => ({
   findOne: jest.fn(),
   update: jest.fn(),
   delete: jest.fn(),
+  findByTitle: jest.fn(),
 });

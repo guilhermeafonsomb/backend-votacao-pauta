@@ -8,6 +8,12 @@ export class AgendaService {
 
   async create(data: AgendaDTO) {
     try {
+      const agendaExist = await this.agendaRepository.findByTitle(data.title);
+
+      if (agendaExist) {
+        throw new Error('Agenda already exists');
+      }
+
       const agenda = await this.agendaRepository.create(data);
 
       return agenda;
