@@ -1,4 +1,5 @@
 import { Agenda, AgendaDTO } from 'src/modules/Agenda/models/agendaModels';
+import { mockCategory } from 'src/modules/Category/tests/category.mock';
 
 export const mockAgendas: Agenda[] = [
   {
@@ -6,7 +7,7 @@ export const mockAgendas: Agenda[] = [
     title: 'testing title',
     duration: 60000,
     open: false,
-    category: 'testing',
+    category: mockCategory,
     yesVotes: 2,
     noVotes: 3,
   },
@@ -14,7 +15,7 @@ export const mockAgendas: Agenda[] = [
     id: '2',
     title: 'testing',
     duration: 60000,
-    category: 'testing',
+    category: mockCategory,
 
     open: true,
     yesVotes: 0,
@@ -25,7 +26,7 @@ export const mockAgendas: Agenda[] = [
 export const mockAgenda: Agenda = {
   id: '2',
   title: 'testing',
-  category: 'testing',
+  category: mockCategory,
   duration: 60000,
   open: true,
   yesVotes: 0,
@@ -35,7 +36,7 @@ export const mockAgenda: Agenda = {
 export const mockAgendaDTO: AgendaDTO = {
   title: 'testing',
   duration: 60000,
-  category: 'testing',
+  category: mockCategory,
 };
 
 export const mockAgendaRepository = () => ({

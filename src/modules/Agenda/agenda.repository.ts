@@ -12,7 +12,7 @@ export class AgendaRepository {
         title: data.title,
         duration: data.duration || 60000,
         category: {
-          connect: { title: data.title },
+          connect: { id: data.category.id },
         },
       },
     });
@@ -41,7 +41,7 @@ export class AgendaRepository {
       where: { id: agendaId },
       data: {
         ...data,
-        category: { connect: { title: data.category } },
+        category: { connect: { id: data.category.id } },
       },
     });
 
