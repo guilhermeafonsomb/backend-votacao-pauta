@@ -31,7 +31,7 @@ export class CategoryRepository {
   }
 
   async findByTitle(title: string) {
-    const category = await this.prisma.category.findFirst({
+    const category = await this.prisma.category.findUnique({
       where: { title },
     });
 
