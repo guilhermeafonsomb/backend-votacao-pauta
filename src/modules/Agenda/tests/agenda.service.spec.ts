@@ -29,6 +29,15 @@ describe('AgendaService', () => {
     expect(result).toEqual('someAgenda');
   });
 
+  it('should find a agenda by category', async () => {
+    agendaRepository.findByCategory.mockResolvedValue('agenda');
+    const category = 'testing';
+    expect(agendaRepository.findByCategory).not.toHaveBeenCalled();
+    const result = await agendaService.findByCategory(category);
+    expect(agendaRepository.findByCategory).toHaveBeenCalledWith(category);
+    expect(result).toEqual('agenda');
+  });
+
   it('should find all agendas', async () => {
     agendaRepository.findAll.mockResolvedValue(['agenda1', 'agenda2']);
     expect(agendaRepository.findAll).not.toHaveBeenCalled();

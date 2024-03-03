@@ -7,6 +7,7 @@ export type AgendaDTO = {
 export type Agenda = {
   id: number;
   title: string;
+  category: string;
   duration: number;
   open: boolean;
   yesVotes: number;

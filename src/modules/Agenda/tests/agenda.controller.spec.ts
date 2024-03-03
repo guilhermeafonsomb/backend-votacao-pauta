@@ -23,19 +23,20 @@ describe('AgendaController', () => {
           provide: AgendaService,
           useValue: {
             create: jest.fn((dto: AgendaDTO) => ({
-              id: Date.now(), // Simulating auto-generated ID
+              id: Date.now(),
               ...dto,
               createdAt: new Date().toISOString(),
               updatedAt: new Date().toISOString(),
             })),
             findAll: jest.fn().mockResolvedValue(mockAgendas),
             findOne: jest.fn().mockResolvedValue(singleAgendar),
+            findByCategory: jest.fn().mockResolvedValue(singleAgendar),
             update: jest
               .fn()
               .mockImplementation((id: number, dto: AgendaDTO) => ({
                 id,
                 ...dto,
-                updatedAt: new Date().toISOString(), // Simulate update timestamp
+                updatedAt: new Date().toISOString(),
               })),
             delete: jest.fn().mockResolvedValue({ deleted: true }),
           },
@@ -58,6 +59,14 @@ describe('AgendaController', () => {
     const result = await controller.create(newAgendaDto);
     expect(result).toEqual(expect.objectContaining(newAgendaDto));
     expect(service.create).toHaveBeenCalledWith(newAgendaDto);
+  });
+
+  it('should find by category', async () => {
+    const category = 'testing';
+    await expect(controller.findByCategory(category)).resolves.toEqual(
+      singleAgendar,
+    );
+    expect(service.findByCategory).toHaveBeenCalledWith(category);
   });
 
   it('should find all agendas', async () => {

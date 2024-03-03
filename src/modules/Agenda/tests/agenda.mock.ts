@@ -6,6 +6,7 @@ export const mockAgendas: Agenda[] = [
     title: 'testing title',
     duration: 60000,
     open: false,
+    category: 'testing',
     yesVotes: 2,
     noVotes: 3,
   },
@@ -13,6 +14,8 @@ export const mockAgendas: Agenda[] = [
     id: 2,
     title: 'testing',
     duration: 60000,
+    category: 'testing',
+
     open: true,
     yesVotes: 0,
     noVotes: 3,
@@ -22,6 +25,7 @@ export const mockAgendas: Agenda[] = [
 export const mockAgenda: Agenda = {
   id: 2,
   title: 'testing',
+  category: 'testing',
   duration: 60000,
   open: true,
   yesVotes: 0,
@@ -36,6 +40,7 @@ export const mockAgendaDTO: AgendaDTO = {
 
 export const mockAgendaRepository = () => ({
   create: jest.fn(),
+  findByCategory: jest.fn(),
   findAll: jest.fn(),
   findOne: jest.fn(),
   update: jest.fn(),
