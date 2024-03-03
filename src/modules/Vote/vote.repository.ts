@@ -26,6 +26,26 @@ export class VoteRepository {
       },
     });
 
+    const agenda = await this.prisma.agenda.findUnique({
+      where: { id: agendaId },
+      select: { yesVotes: true, noVotes: true },
+    });
+
+    if (
+      agenda.yesVotes === agenda.noVotes ||
+      agenda.yesVotes < agenda.noVotes
+    ) {
+      await this.prisma.agenda.update({
+        where: { id: agendaId },
+        data: { approved: false },
+      });
+    } else {
+      await this.prisma.agenda.update({
+        where: { id: agendaId },
+        data: { approved: true },
+      });
+    }
+
     return closeVotingSession;
   }
 
