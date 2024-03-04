@@ -49,14 +49,14 @@ export class AgendaRepository {
   }
 
   async delete(agendaId: string) {
-    return await this.prisma.agenda.delete({
+    await this.prisma.agenda.delete({
       where: { id: agendaId },
     });
   }
 
   async findAll(status: string) {
     if (status === 'close') {
-      const closeAgendas = this.prisma.agenda.findMany({
+      const closeAgendas = await this.prisma.agenda.findMany({
         where: { open: false },
         include: { category: true },
       });
@@ -65,7 +65,7 @@ export class AgendaRepository {
     }
 
     if (status === 'false') {
-      const closeAgendas = this.prisma.agenda.findMany({
+      const closeAgendas = await this.prisma.agenda.findMany({
         where: { open: null },
         include: { category: true },
       });

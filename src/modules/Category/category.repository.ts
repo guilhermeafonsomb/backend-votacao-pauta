@@ -48,7 +48,7 @@ export class CategoryRepository {
   }
 
   async delete(categoryId: string) {
-    return await this.prisma.category.delete({
+    await this.prisma.category.delete({
       where: { id: categoryId },
     });
   }

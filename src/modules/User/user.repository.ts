@@ -21,13 +21,13 @@ export class UserRepository {
   }
 
   async update(id: string, data: UserModelDTO) {
-    return this.prisma.user.update({
+    return await this.prisma.user.update({
       where: { id },
       data,
     });
   }
 
   async delete(id: string) {
-    return this.prisma.user.delete({ where: { id } });
+    await this.prisma.user.delete({ where: { id } });
   }
 }
