@@ -31,6 +31,8 @@
 
 O projeto já vem com dois usuários no banco de dados para realizar a troca e assim testar o sistema de votação.
 
+O link da documentação swagger estara dando display no terminal assim que rodar a aplicação com sucesso.
+
 ## Para instalar as Dependências
 
 ```bash
