@@ -70,7 +70,3 @@ Escolhi por utilizar o Prisma em meu projeto devido à sua facilidade de uso e a
 Decidi pelo SQLite devido à sua simplicidade, leveza e configuração zero, o que o torna ideal para desenvolvimento rápido e aplicações menores, diferentemente do PostgreSQL e MongoDB que são mais adequados para aplicações de maior escala e complexidade.Utilizei o SQLite, apesar de ter experiencia com MongDB e Postgress pois julguei uma aplicação simples e para isso esse banco de dados já era o suficiente para atinger as metas propostas.
 
 Priorizei por organizar o projeto em módulos com pastas separadas para repository, service e controller para cada módulo, visando melhorar a organização do código e facilitar a manutenção. Essa estrutura modular permite a separação clara de responsabilidades, tornando o código mais limpo, escalável e fácil de entender. Além disso, facilita a reutilização de código e a implementação de testes, contribuindo para um desenvolvimento mais eficiente e uma base de código mais robusta.
-
-
-
-Nest is [MIT licensed](LICENSE).
