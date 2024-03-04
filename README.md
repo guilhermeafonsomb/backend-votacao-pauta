@@ -45,7 +45,7 @@ $ npm install
 $ npm run start
 ```
 
-## Para rodar os tenes
+## Para rodar os testes
 
 ```bash
 # unit tests
