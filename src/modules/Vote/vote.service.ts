@@ -46,6 +46,10 @@ export class VoteService {
 
       return addVote;
     } catch (error) {
+      if (error.message === 'User has already voted on this agenda.') {
+        throw new HttpException('Usuário ja votou nessa agenda.', 500);
+      }
+
       if (error.code === PrismaErrorCode.ServerError) {
         throw new HttpException('Erro ao cadastrar voto.', 500);
       }
