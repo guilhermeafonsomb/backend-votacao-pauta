@@ -20,9 +20,9 @@ export class AgendaRepository {
     return agenda;
   }
 
-  async findByCategory(category: string) {
+  async findByCategory(categoryId: string) {
     const agenda = await this.prisma.agenda.findMany({
-      where: { category: { title: category } },
+      where: { category: { id: categoryId } },
     });
 
     return agenda;
@@ -80,6 +80,7 @@ export class AgendaRepository {
   async findOne(agendaId: string) {
     const agendaById = await this.prisma.agenda.findUnique({
       where: { id: agendaId },
+      include: { category: true },
     });
 
     return agendaById;

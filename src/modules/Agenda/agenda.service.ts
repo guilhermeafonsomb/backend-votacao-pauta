@@ -22,9 +22,9 @@ export class AgendaService {
     }
   }
 
-  async findByCategory(category: string) {
+  async findByCategory(categoryId: string) {
     try {
-      const agendas = await this.agendaRepository.findByCategory(category);
+      const agendas = await this.agendaRepository.findByCategory(categoryId);
 
       return agendas;
     } catch (error) {

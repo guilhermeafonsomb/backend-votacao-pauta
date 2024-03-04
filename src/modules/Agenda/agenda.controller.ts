@@ -19,9 +19,9 @@ export class AgendaController {
     return await this.agendaService.create(userData);
   }
 
-  @Get('/byCategory/:category')
-  async findByCategory(@Param('category') category: string) {
-    return await this.agendaService.findByCategory(category);
+  @Get('/byCategory/:categoryId')
+  async findByCategory(@Param('categoryId') categoryId: string) {
+    return await this.agendaService.findByCategory(categoryId);
   }
 
   @Get(':status')
