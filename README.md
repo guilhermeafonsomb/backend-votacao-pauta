@@ -26,6 +26,11 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+
+## Orientações
+
+O projeto já vem com dois usuários no banco de dados para realizar a troca e assim testar o sistema de votação.
+
 ## Para instalar as Dependências
 
 ```bash
@@ -51,7 +56,21 @@ $ npm run test
 - TypeScript
 - Swagger
 - PrismaJs
+- SQLite
 
-## License
+  
+
+## Explicações
+
+Optei pelo NestJS para o projeto backend devido à sua arquitetura bem estruturada, que facilita a manutenção e escalabilidade do código. A integração nativa com TypeScript promove um desenvolvimento mais seguro e eficiente. A vasta biblioteca de módulos integráveis e a comunidade ativa tornam o NestJS uma escolha robusta para construir aplicações modernas e testáveis.
+
+
+Escolhi por utilizar o Prisma em meu projeto devido à sua facilidade de uso e abstração poderosa sobre o banco de dados, permitindo realizar consultas complexas de forma simples e segura. Sua integração perfeita com TypeScript oferece autocompletar e verificação de tipo em tempo de desenvolvimento, reduzindo erros e melhorando a qualidade do código. Além disso, o Prisma simplifica o processo de migração de banco de dados e gera automaticamente um cliente de banco de dados que se adapta ao esquema definido, agilizando o desenvolvimento e facilitando a manutenção do projeto.
+
+Decidi pelo SQLite devido à sua simplicidade, leveza e configuração zero, o que o torna ideal para desenvolvimento rápido e aplicações menores, diferentemente do PostgreSQL e MongoDB que são mais adequados para aplicações de maior escala e complexidade.Utilizei o SQLite, apesar de ter experiencia com MongDB e Postgress pois julguei uma aplicação simples e para isso esse banco de dados já era o suficiente para atinger as metas propostas.
+
+Priorizei por organizar o projeto em módulos com pastas separadas para repository, service e controller para cada módulo, visando melhorar a organização do código e facilitar a manutenção. Essa estrutura modular permite a separação clara de responsabilidades, tornando o código mais limpo, escalável e fácil de entender. Além disso, facilita a reutilização de código e a implementação de testes, contribuindo para um desenvolvimento mais eficiente e uma base de código mais robusta.
+
+
 
 Nest is [MIT licensed](LICENSE).
