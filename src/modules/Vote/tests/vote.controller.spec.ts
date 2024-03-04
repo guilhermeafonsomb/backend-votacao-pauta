@@ -29,7 +29,7 @@ describe('VoteController', () => {
   it('should call openVotingSession', async () => {
     const agendaId = '1';
     await controller.openVotingSession(agendaId);
-    expect(service.openVotingSession).toHaveBeenCalledWith(Number(agendaId));
+    expect(service.openVotingSession).toHaveBeenCalledWith(agendaId);
   });
 
   it('should call addVote on service with the payload', async () => {
@@ -41,7 +41,7 @@ describe('VoteController', () => {
   it('should call closeVotingSession on service with numeric agendaId', async () => {
     const agendaId = '2';
     await controller.closeVotingSession(agendaId);
-    expect(service.closeVotingSession).toHaveBeenCalledWith(Number(agendaId));
+    expect(service.closeVotingSession).toHaveBeenCalledWith(agendaId);
   });
 
   it('should call addVote on service with the correct payload', async () => {

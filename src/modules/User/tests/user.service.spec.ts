@@ -39,7 +39,7 @@ describe('UserService', () => {
 
   it('should find one user', async () => {
     userRepository.findOne.mockResolvedValue('user');
-    const id = 1;
+    const id = '1';
     expect(userRepository.findOne).not.toHaveBeenCalled();
     const result = await userService.findOne(id);
     expect(userRepository.findOne).toHaveBeenCalledWith(id);
@@ -50,7 +50,7 @@ describe('UserService', () => {
     userRepository.findOne.mockResolvedValue('existingUser');
     userRepository.update.mockResolvedValue('updatedUser');
     const updateUserDto: UserModelDTO = { name: 'Updated User' };
-    const id = 1;
+    const id = '1';
     const result = await userService.update(id, updateUserDto);
     expect(userRepository.update).toHaveBeenCalledWith(id, updateUserDto);
     expect(result).toEqual('updatedUser');
@@ -59,7 +59,7 @@ describe('UserService', () => {
   it('should delete a user', async () => {
     userRepository.findOne.mockResolvedValue('existingUser');
     userRepository.delete.mockResolvedValue(undefined);
-    const id = 1;
+    const id = '1';
     await userService.delete(id);
     expect(userRepository.delete).toHaveBeenCalledWith(id);
   });

@@ -27,19 +27,19 @@ describe('VoteService', () => {
   });
 
   it('should open voting session', async () => {
-    const agendaId = 1;
+    const agendaId = '1';
     await service.openVotingSession(agendaId);
     expect(repository.openVotingSession).toHaveBeenCalledWith(agendaId);
   });
 
   it('should close voting session', async () => {
-    const agendaId = 1;
+    const agendaId = '1';
     await service.closeVotingSession(agendaId);
     expect(repository.closeVotingSession).toHaveBeenCalledWith(agendaId);
   });
 
   it('should handle errors when opening voting session', async () => {
-    const agendaId = 1;
+    const agendaId = '1';
     repository.openVotingSession = jest
       .fn()
       .mockRejectedValue(new Error('Simulated error'));
