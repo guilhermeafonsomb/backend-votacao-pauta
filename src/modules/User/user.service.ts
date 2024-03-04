@@ -1,5 +1,6 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { UserModelDTO } from 'src/modules/User/models/userModel';
+import { PrismaErrorCode } from 'src/utils/apiError';
 import { UserRepository } from './user.repository';
 
 @Injectable()
@@ -12,6 +13,9 @@ export class UserService {
 
       return user;
     } catch (error) {
+      if (error.code === PrismaErrorCode.ServerError) {
+        throw new HttpException('Erro ao criar usuário.', 500);
+      }
       throw new HttpException(error, 500);
     }
   }
@@ -26,6 +30,9 @@ export class UserService {
 
       return allUsers;
     } catch (error) {
+      if (error.code === PrismaErrorCode.RecordNotFound) {
+        throw new HttpException('Erro ao consultar usuários.', 500);
+      }
       throw new HttpException(error, 500);
     }
   }
@@ -40,6 +47,9 @@ export class UserService {
 
       return userById;
     } catch (error) {
+      if (error.code === PrismaErrorCode.RecordNotFound) {
+        throw new HttpException('Erro ao consultar usuário.', 500);
+      }
       throw new HttpException(error, 500);
     }
   }
@@ -54,6 +64,9 @@ export class UserService {
 
       return await this.userRepository.update(id, data);
     } catch (error) {
+      if (error.code === PrismaErrorCode.ServerError) {
+        throw new HttpException('Erro ao atualizar usuário.', 500);
+      }
       throw new HttpException(error, 500);
     }
   }
@@ -70,6 +83,9 @@ export class UserService {
 
       return userExists;
     } catch (error) {
+      if (error.code === PrismaErrorCode.ServerError) {
+        throw new HttpException('Erro ao deletar usuário.', 500);
+      }
       throw new HttpException(error, 500);
     }
   }

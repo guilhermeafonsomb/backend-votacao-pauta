@@ -1,4 +1,5 @@
 import { HttpException, Injectable } from '@nestjs/common';
+import { PrismaErrorCode } from 'src/utils/apiError';
 import { AddVoteDTO } from './models/voteModels';
 import { VoteRepository } from './vote.repository';
 
@@ -18,6 +19,9 @@ export class VoteService {
 
       return openSession;
     } catch (error) {
+      if (error.code === PrismaErrorCode.ServerError) {
+        throw new HttpException('Erro ao abrir sessão.', 500);
+      }
       throw new HttpException(error, 500);
     }
   }
@@ -29,6 +33,9 @@ export class VoteService {
 
       return closeSession;
     } catch (error) {
+      if (error.code === PrismaErrorCode.ServerError) {
+        throw new HttpException('Erro ao fechar sessão.', 500);
+      }
       throw new HttpException(error, 500);
     }
   }
@@ -39,6 +46,9 @@ export class VoteService {
 
       return addVote;
     } catch (error) {
+      if (error.code === PrismaErrorCode.ServerError) {
+        throw new HttpException('Erro ao cadastrar voto.', 500);
+      }
       throw new HttpException(error, 500);
     }
   }

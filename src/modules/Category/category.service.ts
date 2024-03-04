@@ -20,6 +20,9 @@ export class CategoryService {
 
       return category;
     } catch (error) {
+      if (error.code === PrismaErrorCode.UniqueConstraintFailed) {
+        throw new HttpException('Já existe uma categoria com esse nome.', 500);
+      }
       throw new HttpException(error, 500);
     }
   }
@@ -30,6 +33,9 @@ export class CategoryService {
 
       return categories;
     } catch (error) {
+      if (error.code === PrismaErrorCode.RecordNotFound) {
+        throw new HttpException('Erro ao consultar categorias.', 500);
+      }
       throw new HttpException(error, 500);
     }
   }
@@ -40,12 +46,23 @@ export class CategoryService {
 
       return category;
     } catch (error) {
+      if (error.code === PrismaErrorCode.RecordNotFound) {
+        throw new HttpException('Erro ao consultar categoria.', 500);
+      }
       throw new HttpException(error, 500);
     }
   }
 
   async update(id: string, data: CategoryDTO) {
     try {
+      const categoryExist = await this.categoryRepository.findByTitle(
+        data.title,
+      );
+
+      if (categoryExist) {
+        throw new Error('Category already exists');
+      }
+
       const category = await this.categoryRepository.findOne(id);
 
       if (!category) {
@@ -56,6 +73,9 @@ export class CategoryService {
 
       return categoryUpdated;
     } catch (error) {
+      if (error.code === PrismaErrorCode.UniqueConstraintFailed) {
+        throw new HttpException('Já existe uma pauta com esse nome.', 500);
+      }
       throw new HttpException(error, 500);
     }
   }

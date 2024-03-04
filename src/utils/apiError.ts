@@ -8,4 +8,5 @@ export enum PrismaErrorCode {
   RecordUsedElseWhere = 'P2007',
   ConnectionError = 'P1001',
   TimeoutError = 'P1008',
+  ServerError = 'P6000',
 }

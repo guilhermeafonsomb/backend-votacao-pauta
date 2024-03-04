@@ -1,4 +1,5 @@
 import { HttpException, Injectable } from '@nestjs/common';
+import { PrismaErrorCode } from 'src/utils/apiError';
 import { AgendaRepository } from './agenda.repository';
 import { AgendaDTO } from './models/agendaModels';
 
@@ -18,6 +19,9 @@ export class AgendaService {
 
       return agenda;
     } catch (error) {
+      if (error.code === PrismaErrorCode.UniqueConstraintFailed) {
+        throw new HttpException('Já existe uma pauta com esse nome.', 500);
+      }
       throw new HttpException(error, 500);
     }
   }
@@ -28,6 +32,9 @@ export class AgendaService {
 
       return agendas;
     } catch (error) {
+      if (error.code === PrismaErrorCode.RecordNotFound) {
+        throw new HttpException('Erro ao consultar pautas por categoria.', 500);
+      }
       throw new HttpException(error, 500);
     }
   }
@@ -38,6 +45,9 @@ export class AgendaService {
 
       return agendas;
     } catch (error) {
+      if (error.code === PrismaErrorCode.RecordNotFound) {
+        throw new HttpException('Erro ao consultar pautas.', 500);
+      }
       throw new HttpException(error, 500);
     }
   }
@@ -48,12 +58,21 @@ export class AgendaService {
 
       return agenda;
     } catch (error) {
+      if (error.code === PrismaErrorCode.RecordNotFound) {
+        throw new HttpException('Erro ao consultar pauta.', 500);
+      }
       throw new HttpException(error, 500);
     }
   }
 
   async update(id: string, data: AgendaDTO) {
     try {
+      const agendaExist = await this.agendaRepository.findByTitle(data.title);
+
+      if (agendaExist) {
+        throw new Error('Agenda already exists');
+      }
+
       const agenda = await this.agendaRepository.findOne(id);
 
       if (!agenda) {
@@ -62,6 +81,9 @@ export class AgendaService {
 
       return await this.agendaRepository.update(id, data);
     } catch (error) {
+      if (error.code === PrismaErrorCode.UniqueConstraintFailed) {
+        throw new HttpException('Já existe uma pauta com esse nome.', 500);
+      }
       throw new HttpException(error, 500);
     }
   }
@@ -76,6 +98,9 @@ export class AgendaService {
 
       return await this.agendaRepository.delete(id);
     } catch (error) {
+      if (error.code === PrismaErrorCode.ServerError) {
+        throw new HttpException('Erro ao deletar pauta.', 500);
+      }
       throw new HttpException(error, 500);
     }
   }
