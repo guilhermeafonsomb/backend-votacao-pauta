@@ -58,6 +58,7 @@ export class AgendaRepository {
     if (status === 'close') {
       const closeAgendas = this.prisma.agenda.findMany({
         where: { open: false },
+        include: { category: true },
       });
 
       return closeAgendas;
@@ -66,6 +67,7 @@ export class AgendaRepository {
     if (status === 'false') {
       const closeAgendas = this.prisma.agenda.findMany({
         where: { open: null },
+        include: { category: true },
       });
 
       return closeAgendas;
@@ -73,6 +75,7 @@ export class AgendaRepository {
 
     const allAgendas = await this.prisma.agenda.findMany({
       where: { open: true },
+      include: { category: true },
     });
     return allAgendas;
   }
