@@ -8,7 +8,6 @@ import { mockUser, mockUsers } from './user.mock';
 describe('UserController', () => {
   let controller: UserController;
   let service: UserService;
-  let prisma: PrismaService;
 
   const userArray = mockUsers;
 
@@ -45,7 +44,6 @@ describe('UserController', () => {
 
     controller = module.get<UserController>(UserController);
     service = module.get<UserService>(UserService);
-    prisma = module.get<PrismaService>(PrismaService);
   });
 
   it('should be defined', () => {

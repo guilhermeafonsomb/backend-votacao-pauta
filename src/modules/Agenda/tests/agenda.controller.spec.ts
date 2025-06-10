@@ -8,7 +8,6 @@ import { mockAgenda, mockAgendaDTO, mockAgendas } from './agenda.mock';
 describe('AgendaController', () => {
   let controller: AgendaController;
   let service: AgendaService;
-  let prisma: PrismaService;
 
   const agendaArray = mockAgendas;
 
@@ -46,7 +45,6 @@ describe('AgendaController', () => {
 
     controller = module.get<AgendaController>(AgendaController);
     service = module.get<AgendaService>(AgendaService);
-    prisma = module.get<PrismaService>(PrismaService);
   });
 
   it('should be defined', () => {

@@ -8,7 +8,6 @@ import { mockCategories, mockCategory, mockCategoryDTO } from './category.mock';
 describe('CategoryController', () => {
   let controller: CategoryController;
   let service: CategoryService;
-  let prisma: PrismaService;
 
   const categoryArray = mockCategories;
 
@@ -45,7 +44,6 @@ describe('CategoryController', () => {
 
     controller = module.get<CategoryController>(CategoryController);
     service = module.get<CategoryService>(CategoryService);
-    prisma = module.get<PrismaService>(PrismaService);
   });
 
   it('should be defined', () => {
