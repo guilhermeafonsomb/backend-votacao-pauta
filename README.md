@@ -26,7 +26,6 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript.
 
-
 ## Orientações
 
 O projeto já vem com dois usuários no banco de dados para realizar a troca e assim testar o sistema de votação.
@@ -39,10 +38,9 @@ O link da documentação swagger estara dando display no terminal assim que roda
 $ npm install
 ```
 
-A porta da aplicação  `http://localhost:3000/` por padrão.
+A porta da aplicação `http://localhost:3000/` por padrão.
 
-A porta do swagger  `http://localhost:3000/api#/` por padrão.
-
+A porta do swagger `http://localhost:3000/api#/` por padrão.
 
 ## Para rodar o projeto
 
@@ -65,12 +63,9 @@ $ npm run test
 - PrismaJs
 - SQLite
 
-  
-
 ## Explicações
 
 Optei pelo NestJS para o projeto backend devido à sua arquitetura bem estruturada, que facilita a manutenção e escalabilidade do código. A integração nativa com TypeScript promove um desenvolvimento mais seguro e eficiente. A vasta biblioteca de módulos integráveis e a comunidade ativa tornam o NestJS uma escolha robusta para construir aplicações modernas e testáveis.
-
 
 Escolhi por utilizar o Prisma em meu projeto devido à sua facilidade de uso e abstração poderosa sobre o banco de dados, permitindo realizar consultas complexas de forma simples e segura. Sua integração perfeita com TypeScript oferece autocompletar e verificação de tipo em tempo de desenvolvimento, reduzindo erros e melhorando a qualidade do código. Além disso, o Prisma simplifica o processo de migração de banco de dados e gera automaticamente um cliente de banco de dados que se adapta ao esquema definido, agilizando o desenvolvimento e facilitando a manutenção do projeto.
 
